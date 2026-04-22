@@ -1,9 +1,8 @@
-import express from "express";
-import User from "../models/User.js";
+const express = require("express");
+const User = require("../models/User");
 
 const router = express.Router();
 
-// Create user
 router.post("/", async (req, res) => {
   try {
     const user = await User.create(req.body);
@@ -13,10 +12,9 @@ router.post("/", async (req, res) => {
   }
 });
 
-// Get users
 router.get("/", async (req, res) => {
   const users = await User.find();
   res.json(users);
 });
 
-export default router;
+module.exports = router;
